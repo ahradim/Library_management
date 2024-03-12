@@ -1,0 +1,28 @@
+<% layout('/layouts/boilerplate') %>
+    <h1 class="text-center">My Issued Books</h1>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+        <% for(let book of issues){ %>
+            <div class="col">
+                <div class="card bg-primary-subtle shadow-lg mx-3 mb-3 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Name: <%= book.userName %>
+                        </h5>
+                        <h5 class="card-title">Reg. No:<%=book.userRegNo %>
+                        </h5>
+                    </div>
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item bg-primary-subtle">Book Name: <%= book.title %>
+                        </li>
+                        <li class="list-group-item bg-primary-subtle">ISBN: <%=book.isbn %>
+                        </li>
+                        <li class="list-group-item bg-primary-subtle">Writer: <%=book.author %>
+                        </li>
+                        <li class="list-group-item bg-primary-subtle">Publisher: <%=book.publication %>
+                        </li>
+                        <li class="list-group-item bg-primary-subtle">Exp Date: <%=book.userExpDate %>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <% } %>
+    </div>

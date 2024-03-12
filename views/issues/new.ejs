@@ -1,0 +1,47 @@
+<% layout('/layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card mb-3 bg-primary-subtle shadow-lg">
+                <div class="card-body">
+                    <h1 class="text-center">New Issuer</h1>
+                    <form action="/books/issues" method="POST" novalidate class="needs-validation">
+                        <div class="mb-3">
+                            <label class="form-label" for="username">Issuer Name</label>
+                            <input class="form-control" type="text" name="issue[userName]" id="username" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="regno">Issuer Reg No</label>
+                            <input class="form-control" type="text" name="issue[userRegNo]" id="regno" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="expDate">Exp Date</label>
+                            <input class="form-control" type="date" min="<%= new Date().toISOString().split('T')[0] %>" name="issue[userExpDate]" id="expDate" required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="title">Title</label>
+                            <input class="form-control" type="text" name="issue[title]" id="title"
+                                value="<%=book.title %>" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="isbn">ISBN</label>
+                            <input type="number" class="form-control" name="issue[isbn]" id="isbn"
+                                value="<%=book.isbn %>" readonly required placeholder="123...">
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="author">Author</label>
+                            <input class="form-control" type="text" name="issue[author]" id="author"
+                                value="<%=book.author %>" readonly required>
+                        </div>
+                        <div class="mb-3">
+                            <label class="form-label" for="publication">Publisher</label>
+                            <input class="form-control" type="text" name="issue[publication]" id="publication"
+                                value="<%=book.publication %>" readonly required></input>
+                        </div>
+                        <div class="mb-3 d-grid">
+                            <button class="btn btn-success">Issue Book</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>

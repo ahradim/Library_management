@@ -1,0 +1,44 @@
+<% layout('/layouts/boilerplate') %>
+    <h1 class="text-center">All Issued Books</h1>
+    <div class="d-flex justify-content-end mb-3">
+        <form action="/search/issuer" method="post" class="d-flex">
+            <input class="form-control me-2" name="q" type="text" placeholder="Search Issuer" aria-label="Search">
+            <button class="btn btn-outline-success" type="submit">Search</button>
+        </form>
+    </div>
+    <div class="row row-cols-1 row-cols-md-3 g-4 mb-3">
+        <% for(let book of issues){ %>
+            <div class="col">
+                <div class="card bg-primary-subtle shadow-lg mx-3 mb-3 h-100">
+                    <div class="card-body">
+                        <h5 class="card-title">Issuer: <%= book.userName %>
+                        </h5>
+                        <h5 class="card-title">Reg. No: <%=book.userRegNo %>
+                        </h5>
+                        <ul class="list-group list-group-flush">
+                            <li class="list-group-item bg-primary-subtle">Book: <%= book.title %>
+                            </li>
+                            <li class="list-group-item bg-primary-subtle">ISBN: <%=book.isbn %>
+                            </li>
+                            <li class="list-group-item bg-primary-subtle">Writer: <%=book.author %>
+                            </li>
+                            <li class="list-group-item bg-primary-subtle">Publisher: <%=book.publication %>
+                            </li>
+                            <li class="list-group-item bg-primary-subtle">Exp Date: <%=book.userExpDate %>
+                            </li>
+                        </ul>
+                    </div>
+                    <div class="card-footer">
+                        <form class="d-grid" action="/books/issues/<%=book._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-success mb-3">Is returned?</button>
+                        </form>
+                        <div class="d-grid">
+                            <a class="btn btn-info" href="/books/issues/<%=book._id%>/reissue"
+                                class="card-link">Reissue</a>
+                            <!-- <button class="btn btn-warning">Reissue</button> -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <% } %>
+    </div>

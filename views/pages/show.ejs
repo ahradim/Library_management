@@ -1,0 +1,35 @@
+<% layout('/layouts/boilerplate') %>
+    <div class="row">
+        <div class="col-md-6 offset-md-3">
+            <div class="card bg-primary-subtle shadow-lg mb-3" style="max-width: 70vh">
+                <img src="<%=book.cover[0].url%>" class="card-img-top" alt="">
+                <div class="card-body">
+                    <h3 class="card-title">
+                        <%= book.title %>
+                    </h3>
+                </div>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item bg-primary-subtle">
+                        Written By <b>
+                            <%= book.author %>
+                        </b>
+                    </li>
+                    <li class="list-group-item bg-primary-subtle">Published By <b>
+                            <%= book.publication %>
+                        </b></li>
+                    <li class="list-group-item bg-primary-subtle">Book No: <b>
+                            <%= book.isbn %>
+                        </b></li>
+                </ul>
+                <% if(currentUser?.admin){ %>
+                    <div class="card-footer">
+                        <a class="btn btn-info" href="/books/<%=book._id%>/issues/new" class="card-link">Issue To</a>
+                        <a class="btn btn-info" href="/books/<%=book._id%>/edit" class="card-link">Edit</a>
+                        <form class="d-inline float-end " action="/books/<%=book._id%>?_method=DELETE" method="POST">
+                            <button class="btn btn-danger">Delete</button>
+                        </form>
+                    </div>
+                    <% } %>
+            </div>
+        </div>
+    </div>
